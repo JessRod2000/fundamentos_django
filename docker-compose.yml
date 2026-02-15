@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgres_container
+    restart: always #reiniciar cada vez que caiga
+    ports: 
+    #    p1 : p2
+    # p1 es el puerto donde se va a mostrar en mi computadora
+      - "${DB_PORT:-5432}:5432"
+    environment:
+      # - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    # networks:
+    #   - network_test
+    
+#   pgadmin:
+#     image: dpage/pgadmin4
+#     environment:
+#       PGADMIN_DEFAULT_EMAIL = "admin@admin.com"
+#       PGADMIN_DEFAULT_PASSWORD = "admin"
+#     ports:
+#       - "80:80"
+#     networks:
+#       - network_test
+#     # depends para que inicie despues de postgres
+#     depends_on:
+#       - postgres
+    
+# networks:
+#   network_test:
