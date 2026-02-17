@@ -1,3 +1,12 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Curso
+
+def lista_cursos(request):
+    cursos = (
+        Curso.objects
+        .select_related("categoria")
+        .order_by("-fecha_inicio", "titulo")
+    )
+    contexto = {"cursos": cursos}
+    return render(request, "cursos/lista_cursos.html", contexto)

@@ -13,7 +13,6 @@ import os
 from dotenv import load_dotenv 
 from pathlib import Path
 load_dotenv()
-print(f"DEBUG: El nombre de la BD es {os.getenv('DB_NAME')}")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
