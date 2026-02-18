@@ -23,7 +23,7 @@ class Curso(models.Model):
     categoria = models.ForeignKey(
         Categoria,#se hace referencia de la tabla donde se hace la referencia
         on_delete=models.PROTECT,#protege la integridad de la bd
-        related_name='cursos', #nombre de la relacion que se usa en el ORM
+        related_name='cursos', #nombre de la relacion que se usa en el ORM Te permite hacer consultas limpias desde la categoría hacia sus cursos
         verbose_name='categoría', 
     )
     # Campos

@@ -5,8 +5,11 @@ __pycache__/
 dist/
 build/
 
+# Datos de la base de datos (Docker)
+postgres_data/
+
 # Entornos virtuales
-enviroment/
+entorno/
 .venv/
 venv/
 env/
@@ -18,7 +21,7 @@ media/
 
 # Secrets
 .env
-.env.*
+# .env.*
 *.key
 
 # Editor
