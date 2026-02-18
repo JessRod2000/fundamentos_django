@@ -3,6 +3,8 @@
 {% block titulo %}Cursos{% endblock %}
 
 {% block contenido %}
+
+  <a href="{% url 'cursos:crear' %}">Crear curso</a>
   <h2>Listado de cursos</h2>
 
   {% if cursos %}
@@ -14,17 +16,24 @@
           <th style="text-align:left; border-bottom:1px solid #ccc; padding:8px;">Inicio</th>
           <th style="text-align:left; border-bottom:1px solid #ccc; padding:8px;">Horas</th>
           <th style="text-align:left; border-bottom:1px solid #ccc; padding:8px;">Activo</th>
+          <th style="text-align:left; border-bottom:1px solid #ccc; padding:8px;">Acciones</th>
         </tr>
       </thead>
       <tbody>
         {% for curso in cursos %}
           <tr>
-            <td style="padding:8px; border-bottom:1px solid #eee;">{{ curso.titulo }}</td>
+            <td style="padding:8px; border-bottom:1px solid #eee;">
+              <a href="{% url "cursos:detalle" curso.pk %}">{{ curso.titulo }}</a>
+            </td>
             <td style="padding:8px; border-bottom:1px solid #eee;">{{ curso.categoria.nombre }}</td>
             <td style="padding:8px; border-bottom:1px solid #eee;">{{ curso.fecha_inicio }}</td>
             <td style="padding:8px; border-bottom:1px solid #eee;">{{ curso.carga_horaria }}</td>
             <td style="padding:8px; border-bottom:1px solid #eee;">
               {% if curso.activo %}Sí{% else %}No{% endif %}
+            </td>
+            <td style="padding:8px; border-bottom:1px solid #eee; display:flex; gap:8px; flex-wrap:wrap;">
+              <a href="{% url 'cursos:editar' curso.pk %}">Editar</a>
+              <a href="{% url 'cursos:eliminar' curso.pk %}">Eliminar</a>
             </td>
           </tr>
         {% endfor %}
